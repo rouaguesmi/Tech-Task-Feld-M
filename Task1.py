@@ -1,11 +1,7 @@
-from multiprocessing import connection
 import sqlite3
 
-from colorama import Cursor
-
-
 def task1() :
-
+    """ finds out the visitor who created the most revenue in the database transactions.db """
     connection = sqlite3.connect('transactions.db')
     cursor = connection.cursor()
 
@@ -15,9 +11,8 @@ def task1() :
                        ORDER BY visitor_revenue DESC
                        LIMIT 1 ''' 
     cursor.execute(task1Request)
-    print(cursor.fetchall()[0][0])
+    print("The visitor's id having the highest revenue is : " , cursor.fetchall()[0][0])
     connection.close()
 
 if __name__ == '__main__' : 
     task1() 
-    
