@@ -5,12 +5,12 @@ def task1() :
     connection = sqlite3.connect('transactions.db')
     cursor = connection.cursor()
 
-    task1Request = ''' SELECT visitor_id , SUM(revenue) AS visitor_revenue 
+    task1_request = ''' SELECT visitor_id , SUM(revenue) AS visitor_revenue 
                        FROM Transactions 
                        GROUP BY visitor_id
                        ORDER BY visitor_revenue DESC
                        LIMIT 1 ''' 
-    cursor.execute(task1Request)
+    cursor.execute(task1_request)
     print("The visitor's id having the highest revenue is : " , cursor.fetchall()[0][0])
     connection.close()
 
