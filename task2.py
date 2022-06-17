@@ -15,7 +15,7 @@ def task2_solution():
                       WHERE dv.device_name = 'Mobile Phone'
                       ORDER BY revenue DESC'''
 
-    # execute the sql query and print the result          
+    # execute the sql query and print the result
     result = commun.connect_and_execute_query(task2_query)
 
     date_time, revenue, visitor_id = result[0][0]
