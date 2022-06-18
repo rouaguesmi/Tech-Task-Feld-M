@@ -11,10 +11,13 @@ PORT_ID = '5432'
 DB_NAME_SQLITE = 'transactions.db'
 
 def task5_solution():
-    ''' Test the transactions class '''
+    ''' Test the transactions class :
+    1/ Copy the transactions sqlite database into a postgres database
+    2/ Answer task 1 using the transactions class with postgres and sqlite
+    '''
 
-    transactions_postgres = tr.Transactions(dbtype='postgres')
-    transactions_sqlite = tr.Transactions(dbtype='sqlite')
+    transactions_postgres = tr.TransactionsDBManager(dbtype='postgres')
+    transactions_sqlite = tr.TransactionsDBManager(dbtype='sqlite')
 
     try:
 
@@ -33,10 +36,10 @@ def task5_solution():
                                 PRIMARY KEY(id) );
 
                             CREATE TABLE Transactions(
-                                id SERIAL PRIMARY KEY,
+                                id INTEGER PRIMARY KEY,
                                 datetime TEXT,
-                                visitor_id bigint,
-                                device_type int,
+                                visitor_id BIGINT,
+                                device_type INTEGER,
                                 revenue REAL,
                                 tax REAL,
                                 FOREIGN KEY(device_type)
@@ -66,10 +69,10 @@ def task5_solution():
         print(error)
 
     finally:
-        if transactions_postgres.is_connected():
+        if transactions_postgres.is_connected:
             transactions_postgres.close()
 
-        if transactions_sqlite.is_connected():
+        if transactions_sqlite.is_connected:
             transactions_sqlite.close()
 
 
