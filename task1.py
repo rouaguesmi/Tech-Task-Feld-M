@@ -13,7 +13,11 @@ def task1_solution():
 
     # execute the sql query and print the result
     result = commun.connect_and_execute_query(task1_query)
-    print("The visitor's id having the highest revenue is : ", result[0][0])
+
+    if len(result) > 1 and len(result[0]) > 1:
+        print("The visitor's id having the highest revenue is : ", result[0][0])
+    else:
+        print("No result was found in the database")
 
 
 if __name__ == '__main__':

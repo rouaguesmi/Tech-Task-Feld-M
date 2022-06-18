@@ -61,7 +61,7 @@ def task5_solution():
         transactions_postgres.executemany(insert_script_transactions, transactions)
 
         transactions_postgres.commit()
-
+        
         transactions_postgres.print_visitor_with_most_revenue()
         transactions_sqlite.print_visitor_with_most_revenue()
 

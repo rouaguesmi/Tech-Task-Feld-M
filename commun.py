@@ -14,15 +14,24 @@ def connect_and_execute_query(sql_query: str) -> list:
 
     # Get the absolute path of the database file ("transactions.db")
     dbfile_path = path.abspath(DB_NAME)
-    # Connect to the database and create a cursor
-    connection = sqlite3.connect(dbfile_path)
-    cursor = connection.cursor()
-    # Execute the query
-    cursor.execute(sql_query)
-    # Fetch the returned result
-    result = cursor.fetchall()
-    # Close the connection and return
-    connection.close()
+
+    connection = None
+    result = []
+    try:
+        # Connect to the database and create a cursor
+        with sqlite3.connect(dbfile_path) as connection:
+            with connection.cursor() as cursor:
+                # Execute the query
+                cursor.execute(sql_query)
+                # Fetch the returned result
+                result = cursor.fetchall()
+                # Close the connection and return
+    except Exception as error:
+        print(error)
+    finally:
+        if connection is not None:
+            connection.close()
+
     return result
 
 
