@@ -4,7 +4,7 @@ import csv
 from os import path
 import sqlite3
 
-FILE_NAME = "tansactions.csv"
+FILE_NAME = "transactions.csv"
 DB_NAME = 'transactions.db'
 
 
@@ -18,7 +18,6 @@ def task3_solution():
                         ON dv.id = tr.device_type'''
 
     # Get absolute path for the file
-
     file_path = path.abspath(FILE_NAME)
 
     # Get the absolute path of the database file ("transactions.db")
