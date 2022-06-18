@@ -18,7 +18,6 @@ def task4_solution():
         # currency exchange file does not contain the exchange rate for
         # that day, so we use the rate of the last working day of
         # that week (Friday) instead.
-
         if date_obj.weekday() == 5:
             date_obj -= timedelta(days=1)
         elif date_obj.weekday() == 6:
