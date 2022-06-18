@@ -38,6 +38,7 @@ def task3_solution():
         writer.writerow(cols_names)
         for row in result:
             writer.writerow(row)
+    connection.close()
 
 
 if __name__ == '__main__':
