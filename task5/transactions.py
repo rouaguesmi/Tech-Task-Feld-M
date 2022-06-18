@@ -8,7 +8,10 @@ lets create create a classe : TransactionDBManager : this class will
 '''
 
 import sqlite3
+from pexpect import ExceptionPexpect
 import psycopg2
+
+DB_DISCONNECTED_MSG = 'Database is disconnected.'
 
 class TransactionsDBManager:
     ''' Class to manage the 'Transactions' database using different databases '''
@@ -40,31 +43,40 @@ class TransactionsDBManager:
     def execute(self, sql: str):
         ''' execute a sql query '''
         if self.m_cursor is not None:
-            self.m_cursor.execute(sql)  
-
+            self.m_cursor.execute(sql)
+        else:
+            raise Exception(DB_DISCONNECTED_MSG)
+  
     def fetchall(self, sql: str):
         ''' Fetch all '''
         self.execute(sql)
         if self.m_cursor is not None:
             return self.m_cursor.fetchall()
-        return None
+        else:
+            raise Exception(DB_DISCONNECTED_MSG)
 
     def fetchone(self, sql: str):
         ''' Fetch one'''
         self.execute(sql)
         if self.m_cursor is not None:
             return self.m_cursor.fetchone()[0]
-        return None
+        else:
+            raise Exception(DB_DISCONNECTED_MSG)
 
     def executemany(self, sql: str, data=None) -> None:
         ''' ExecuteMany ... '''
         if self.m_cursor is not None:
             self.m_cursor.executemany(sql, data)
+        else:
+            raise Exception(DB_DISCONNECTED_MSG)
 
-    def commit(self):
+    def commit(self) -> None:
         ''' Commit the updates to the database'''
         if self.m_connection is not None:
             self.m_connection.commit()
+            print('Commit to the database done.')
+        else:
+            print(DB_DISCONNECTED_MSG)
 
     def close(self) -> None:
         ''' Disconnect from the cursor and the database'''
@@ -75,28 +87,30 @@ class TransactionsDBManager:
         if self.m_connection is not None:
             self.m_connection.close()
             self.m_connection = None
+            print("Connection closed.")
+        else:
+            print('Connection is already closed.')
 
     @property
     def is_connected(self) -> bool:
-        ''' Write me'''
+        ''' Return true if the database is connected '''
         return self.m_connection is not None
 
-    def get_transactions(self):
+    def get_transactions(self) -> list:
         """Return all the data from the transactions table"""
         if not self.is_connected:
-            raise Exception('Please connect to the database !')
+            raise Exception(DB_DISCONNECTED_MSG)
         else:
             sql = f'SELECT * FROM {self.m_transactions_name}'
             return self.fetchall(sql)
 
-    def get_devices(self):
+    def get_devices(self) -> list:
         """Return all the data from the devices table"""
         if not self.is_connected:
-            raise Exception('Please connect to the database !')
+            raise Exception(DB_DISCONNECTED_MSG)
         else:
             sql = f'SELECT * FROM {self.m_transactions_name}'
             return self.fetchall(sql)
-
 
     def print_visitor_with_most_revenue(self):
         ''' Re-implementing task 1 '''

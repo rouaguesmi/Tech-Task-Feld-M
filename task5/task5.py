@@ -28,6 +28,7 @@ def task5_solution():
 
         transactions_sqlite.connect(sqlite_dbfile_abspath)
 
+        
         create_script = ''' DROP TABLE IF EXISTS transactions, devices;
 
                             CREATE TABLE Devices(
