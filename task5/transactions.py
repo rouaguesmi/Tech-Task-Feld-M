@@ -10,8 +10,8 @@ lets create create a classe : TransactionDBManager : this class will
 import sqlite3
 import psycopg2
 
-class Transactions:
-    ''' Abstract database '''
+class TransactionsDBManager:
+    ''' Class to manage the 'Transactions' database using different databases '''
 
     def __init__(self, dbtype='sqlite') -> None:
         self.m_dbtype = dbtype
@@ -38,7 +38,7 @@ class Transactions:
         self.m_cursor = self.m_connection.cursor()
 
     def execute(self, sql: str):
-        ''' todo '''
+        ''' execute a sql query '''
         if self.m_cursor is not None:
             self.m_cursor.execute(sql)  
 
@@ -50,13 +50,13 @@ class Transactions:
         return None
 
     def fetchone(self, sql: str):
-        ''' FetchOne'''
+        ''' Fetch one'''
         self.execute(sql)
         if self.m_cursor is not None:
             return self.m_cursor.fetchone()[0]
         return None
 
-    def executemany(self, sql: str, data: list) -> None:
+    def executemany(self, sql: str, data=None) -> None:
         ''' ExecuteMany ... '''
         if self.m_cursor is not None:
             self.m_cursor.executemany(sql, data)
