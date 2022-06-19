@@ -1,5 +1,5 @@
 ''' Utils module contains commun functions used in
-    tasks 1, 2, 3 and 4 '''
+    tasks 1 to 4 '''
 
 import sqlite3
 from os import path
@@ -10,6 +10,7 @@ DB_NAME = 'transactions.db'
 EUROFXREF_XML = 'eurofxref-hist-90d.xml'
 
 NO_RESULT_STR = 'No result was found in the database.'
+
 
 def connect_and_execute_query(sql_query: str) -> list:
     """ Connect to the sqlite database 'transactions.db',
