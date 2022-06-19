@@ -39,9 +39,11 @@ def connect_and_execute_query(sql_query: str) -> list:
 
 
 def extract_exchange_rates(file=EUROFXREF_XML, currency='USD') -> dict:
-    ''' Extract the exchange rates of the currency mentioned in the parameters from
-        the provided XML file and return a dictionary containing the date as a key
-        and the exchange rate as a corresponding value. '''
+    '''
+    Extract the exchange rates of the currency mentioned in the parameters from
+    the provided XML file and return a dictionary containing the date as a key
+    and the exchange rate as a corresponding value.
+    '''
 
     # Get the absolute path of the XML file ("eurofxref-hist-90d.xml")
     xml_file_path = path.abspath(file)
@@ -68,7 +70,7 @@ def find_day_with_most_revenue(result: list) -> tuple:
 
     # Temporary dictionary to process the data
     # Key = day, value = total revenue of the day
-    tmp_dict = dict()
+    tmp_dict = {}
 
     for date_time, tot_revenue in result:
         # Extract the day from the datetime
