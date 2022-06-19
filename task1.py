@@ -1,6 +1,6 @@
 '''Solution for task 1'''
 
-import utils 
+import utils
 
 
 def task1_solution():
@@ -17,7 +17,8 @@ def task1_solution():
     result = utils.connect_and_execute_query(task1_query)
 
     if len(result) > 1 and len(result[0]) > 1:
-        print(f"The visitor's id who created the most revenue is: {result[0][0]}\n"
+        print(f"The visitor's id who created the most"
+              f" revenue is: {result[0][0]}\n"
               f"The revenue created is: {round(result[0][1],2)} $")
     else:
         print(utils.NO_RESULT_STR)

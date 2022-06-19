@@ -43,9 +43,11 @@ def task2_solution():
     print("Supposing that the transactions happened in different times: ")
 
     # In order to solve this task in a more general way;
-    # without supposing that the time will always be the same at every transaction operation,
+    # without supposing that the time will always be the same
+    # at every transaction operation,
     # I implemented the function find_day_with_most_revenue in utils module
-    # that will process the returned result and finds out the day with most revenue.
+    # that will process the returned result and finds out
+    # the day with most revenue.
     # Please refer to the function's docstring for further details.
 
     if len(result) > 1 and len(result[0]) > 1:
