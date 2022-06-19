@@ -5,7 +5,7 @@ from os import path
 import sqlite3
 from typing import final
 
-import commun as cm
+import utils as cm
 
 
 def task4_solution():

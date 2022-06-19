@@ -1,11 +1,12 @@
 '''Solution for task 1 '''
 
-import commun as cm
+import utils as cm
 
 
 def task1_solution():
     """ finds out the visitor who created the most revenue
-         in the sqlite database transactions.db """
+         in the sqlite database transactions.db and print
+         its ID. """
 
     # sql query for task 1
     task1_query = '''SELECT visitor_id , SUM(revenue) AS visitor_revenue

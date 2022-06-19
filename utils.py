@@ -12,7 +12,7 @@ NO_RESULT_STR = 'No result was found in the database.'
 
 def connect_and_execute_query(sql_query: str) -> list:
     """ Connect to the sqlite database 'transactions.db', 
-        execute the query 'sql_query' and return the result"""
+        execute the query 'sql_query' and return the result """
 
     # Get the absolute path of the database file ("transactions.db")
     dbfile_path = path.abspath(DB_NAME)
