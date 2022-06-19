@@ -21,7 +21,7 @@ def task5_solution():
     I will use it to do the following tasks :
 
     1/ Copy the transactions sqlite database into a postgres database.
-    2/ solve task 1 with postgresql and sqlite databases using two
+    2/ Solve task 1 with postgresql and sqlite databases using two
     objects of the class TransactionsDBManager
 
     Please refer to the README file or the transactions.py
