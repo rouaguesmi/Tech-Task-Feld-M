@@ -1,10 +1,10 @@
-''' Solution for task 3'''
+'''Solution for task 3'''
 
 import csv
 from os import path
 import sqlite3
 
-FILE_NAME = "transactions.csv"
+CSV_FILE_NAME = "transactions.csv"
 DB_NAME = 'transactions.db'
 
 
@@ -18,7 +18,7 @@ def task3_solution():
                         ON dv.id = tr.device_type'''
 
     # Get absolute path for the file
-    file_path = path.abspath(FILE_NAME)
+    csv_file_path = path.abspath(CSV_FILE_NAME)
 
     # Get the absolute path of the database file ("transactions.db")
     dbfile_path = path.abspath(DB_NAME)
@@ -35,12 +35,13 @@ def task3_solution():
                 # Get columns names
                 cols_names = (desc[0] for desc in cursor.description)
         
-            # Stream the datas to a csv file
-        with open(file_path, 'w', encoding="utf8") as file:
+            # Stream the fetched datas to a csv file
+        with open(csv_file_path, 'w', encoding="utf8") as file:
             writer = csv.writer(file)
             writer.writerow(cols_names)
             for row in transactions:
                 writer.writerow(row)
+
     except Exception as error:
         if connection is not None:
             connection.close()

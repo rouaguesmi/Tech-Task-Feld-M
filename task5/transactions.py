@@ -115,7 +115,7 @@ class TransactionsDBManager:
         ''' Re-implementing task 1 '''
         query = (''' SELECT visitor_id , SUM(revenue) AS visitor_revenue
                      FROM transactions GROUP BY visitor_id
-                     ORDER BY visitor_revenue DESC LIMIT 1''')
-        print("The visitor's id having the highest revenue is : ",
+                     ORDER BY visitor_revenue DESC''')
+        print("The visitor's id generating the highest revenue is : ",
               self.fetchone(query))
     

@@ -1,16 +1,24 @@
 '''Solution to task 4'''
+
 from datetime import datetime, timedelta
 from os import path
 import sqlite3
-import commun
+from typing import final
+
+import commun as cm
 
 
 def task4_solution():
     ''' write me'''
+
     update_list = []
-    currency_rates = commun.extract_exchange_rates()
+
+    currency_rates = cm.extract_exchange_rates()
+
     sql_query = ''' SELECT id, datetime FROM Transactions '''
-    result = commun.connect_and_execute_query(sql_query)
+
+    result = cm.connect_and_execute_query(sql_query)
+
     for transaction_id, date_time in result:
         date_obj = datetime.strptime(date_time, "%Y-%m-%d %H:%M:%S")
 
@@ -24,18 +32,29 @@ def task4_solution():
             date_obj -= timedelta(days=1)
 
         date_str = date_obj.strftime("%Y-%m-%d")
+
         if date_str not in currency_rates:
             continue
+
         update_list.append((currency_rates[date_str], transaction_id))
-    dbfile_path = path.abspath(commun.DB_NAME)
-    # Update the table :
-    connection = sqlite3.connect(dbfile_path)
-    cursor = connection.cursor()
-    update_query = '''  UPDATE Transactions
-                        SET revenue = revenue / ? WHERE id = ?'''
-    cursor.executemany(update_query, update_list)
-    connection.commit()
-    connection.close()
+
+    dbfile_path = path.abspath(cm.DB_NAME)
+
+    connection = None
+    try:
+        # Update the transactions table with the revenue in EUR : EUR = USD / rate :
+        with sqlite3.connect(dbfile_path) as connection:
+            with connection.cursor() as cursor:
+                update_query = '''  UPDATE Transactions
+                                    SET revenue = revenue / ? WHERE id = ?'''
+                cursor.executemany(update_query, update_list)
+
+                connection.commit()
+    except Exception as error:
+        print(error)
+    finally:
+        if connection is not None:
+            connection.close()
 
 
 task4_solution()

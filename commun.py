@@ -1,4 +1,5 @@
-''' Commun utility for the tasks '''
+''' Commun module contains commun functions used in
+    tasks 1, 2, 3 and 4 '''
 
 import sqlite3
 from os import path
@@ -7,10 +8,11 @@ import xml.etree.ElementTree as ET
 DB_NAME = 'transactions.db'
 EUROFXREF_XML = 'eurofxref-hist-90d.xml'
 
+NO_RESULT_STR = 'No result was found in the database.'
 
 def connect_and_execute_query(sql_query: str) -> list:
-    """ Connect to the sqlite database, execute the query 'sql_query'
-     and return the result"""
+    """ Connect to the sqlite database 'transactions.db', 
+        execute the query 'sql_query' and return the result"""
 
     # Get the absolute path of the database file ("transactions.db")
     dbfile_path = path.abspath(DB_NAME)
@@ -25,7 +27,6 @@ def connect_and_execute_query(sql_query: str) -> list:
                 cursor.execute(sql_query)
                 # Fetch the returned result
                 result = cursor.fetchall()
-                # Close the connection and return
     except Exception as error:
         print(error)
     finally:
@@ -38,7 +39,8 @@ def connect_and_execute_query(sql_query: str) -> list:
 def extract_exchange_rates(file=EUROFXREF_XML, currency='USD') -> map:
     ''' write me '''
 
-    tree = ET.parse(file)
+    xml_file_path = path.abspath(file)
+    tree = ET.parse(xml_file_path)
     root = tree.getroot()
     namespaces = {"ex": "http://www.ecb.int/vocabulary/2002-08-01/eurofxref"}
     currency_rates = {}
