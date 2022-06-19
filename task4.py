@@ -42,7 +42,8 @@ def task4_solution():
 
     connection = None
     try:
-        # Update the transactions table with the revenue in EUR : EUR = USD / rate :
+        # Update the transactions table with the revenue in EUR
+        # EUR = USD / rate :
         with sqlite3.connect(dbfile_path) as connection:
             cursor = connection.cursor()
             update_query = '''  UPDATE Transactions
@@ -54,6 +55,7 @@ def task4_solution():
     finally:
         if connection is not None:
             connection.close()
+
 
 if __name__ == '__main__':
     task4_solution()
