@@ -35,7 +35,7 @@ def task3_solution():
                 # Get columns names
                 cols_names = (desc[0] for desc in cursor.description)
         
-            # Stream the fetched datas to a csv file
+        # Stream the fetched datas to a csv file
         with open(csv_file_path, 'w', encoding="utf8") as file:
             writer = csv.writer(file)
             writer.writerow(cols_names)
