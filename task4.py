@@ -5,7 +5,7 @@ from os import path
 import sqlite3
 from typing import final
 
-import utils as cm
+import utils 
 
 
 def task4_solution():
@@ -13,11 +13,11 @@ def task4_solution():
 
     update_list = []
 
-    currency_rates = cm.extract_exchange_rates()
+    currency_rates = utils.extract_exchange_rates()
 
     sql_query = ''' SELECT id, datetime FROM Transactions '''
 
-    result = cm.connect_and_execute_query(sql_query)
+    result = utils.connect_and_execute_query(sql_query)
 
     for transaction_id, date_time in result:
         date_obj = datetime.strptime(date_time, "%Y-%m-%d %H:%M:%S")
@@ -38,7 +38,7 @@ def task4_solution():
 
         update_list.append((currency_rates[date_str], transaction_id))
 
-    dbfile_path = path.abspath(cm.DB_NAME)
+    dbfile_path = path.abspath(utils.DB_NAME)
 
     connection = None
     try:

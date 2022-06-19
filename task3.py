@@ -43,6 +43,8 @@ def task3_solution():
                 writer.writerow(row)
 
     except Exception as error:
+        print(error)
+    finally:
         if connection is not None:
             connection.close()
 

@@ -9,7 +9,6 @@ lets create create a classe : TransactionDBManager : this class will
 
 import sqlite3
 import psycopg2
-from sqlalchemy import true
 
 DB_DISCONNECTED_MSG = 'Database is disconnected.'
 
