@@ -8,7 +8,6 @@ lets create create a classe : TransactionDBManager : this class will
 '''
 
 import sqlite3
-from pexpect import ExceptionPexpect
 import psycopg2
 
 DB_DISCONNECTED_MSG = 'Database is disconnected.'
