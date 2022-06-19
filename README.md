@@ -34,11 +34,11 @@ In task 5 we used the external library psycopg2, you can install it, by running 
 
 In <b> task 5 </b> an installation of <b> PostgreSQL </b> server is required. 
 According to your operating system, follow the provided link for installation instructions : <br/>
-```
+
 * <b> [Windows](https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql/) </b>
 * <b> [Linux ](https://www.postgresqltutorial.com/install-postgresql-linux/)</b>
 * <b> [Mac OS ](https://www.postgresqltutorial.com/install-postgresql-macos/)</b>
-```
+
 ## Utils module
 
 In order to avoid code duplication and centralize used functions in tasks 1 to 4, I created the module utils wich contains the following functions :<br/>
