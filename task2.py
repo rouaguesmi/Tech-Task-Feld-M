@@ -1,7 +1,7 @@
 '''Solution for task 2'''
 
 from datetime import datetime
-import commun as cm
+import utils as cm
 
 
 def task2_solution():
