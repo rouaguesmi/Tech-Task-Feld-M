@@ -58,7 +58,8 @@ class TransactionsDBManager:
         '''Execute a sql query '''
         if self.m_cursor is not None:
             self.m_cursor.execute(sql)
-        raise Exception(DB_DISCONNECTED_MSG)
+        else:
+            raise Exception(DB_DISCONNECTED_MSG)
 
     def fetchall(self, sql: str) -> list:
         '''Fetch all rows after executing the sql query given in parameter'''
@@ -78,13 +79,15 @@ class TransactionsDBManager:
         ''' Execute many sql querries with the data given in parameter.'''
         if self.m_cursor is not None:
             self.m_cursor.executemany(sql, data)
-        raise Exception(DB_DISCONNECTED_MSG)
+        else:
+            raise Exception(DB_DISCONNECTED_MSG)
 
     def commit(self) -> None:
         ''' Commit the updates to the database.'''
         if self.m_connection is not None:
             self.m_connection.commit()
-        raise Exception(DB_DISCONNECTED_MSG)
+        else:
+            raise Exception(DB_DISCONNECTED_MSG)
 
     def close(self) -> None:
         ''' Disconnect from the cursor and the database'''
@@ -114,7 +117,7 @@ class TransactionsDBManager:
         """Return all the data from the devices table"""
         if not self.is_connected:
             raise Exception(DB_DISCONNECTED_MSG)
-        sql = f'SELECT * FROM {self.m_transactions_name}'
+        sql = f'SELECT * FROM {self.m_devices_name}'
         return self.fetchall(sql)
 
     def print_visitor_with_most_revenue(self):
