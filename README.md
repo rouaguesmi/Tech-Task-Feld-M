@@ -76,9 +76,8 @@ The class TransactionsDBManager constructor takes into parameters the database t
 
 After that, the class will allow the user to manage the two types of databases in the same manner.
 
-In order to demostrate the utility of the class TransactionsDBManager
-I used it in task5.py to do the following tasks :
+In order to demostrate the utility of the class TransactionsDBManager <br/>
+I used it in task5.py to do the following tasks : <br/>
 
-1/ Copy the transactions sqlite database into a postgres database.
-2/ solve task 1 with postgresql and sqlite databases using two
-objects of the class TransactionsDBManager
+1/ Copy the transactions sqlite database into a postgres database. <br/>
+2/ Solve task 1 with postgresql and sqlite databases using two objects of the class TransactionsDBManager
