@@ -55,7 +55,7 @@ def task5_solution():
 
                         CREATE TABLE Transactions(
                             id INTEGER PRIMARY KEY,
-                            datetime TEXT,
+                            datetime TIMESTAMP,
                             visitor_id BIGINT,
                             device_type INTEGER,
                             revenue REAL,
