@@ -1,4 +1,4 @@
-'''  Solution to task 4'''
+'''Solution to task 4'''
 from datetime import datetime, timedelta
 from os import path
 import sqlite3
@@ -9,7 +9,7 @@ def task4_solution():
     ''' write me'''
     update_list = []
     currency_rates = commun.extract_exchange_rates()
-    sql_query = ''' SELECT id , datetime FROM Transactions '''
+    sql_query = ''' SELECT id, datetime FROM Transactions '''
     result = commun.connect_and_execute_query(sql_query)
     for transaction_id, date_time in result:
         date_obj = datetime.strptime(date_time, "%Y-%m-%d %H:%M:%S")
