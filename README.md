@@ -12,7 +12,6 @@ This repository contains solutions for the tech task provided by [FELD M](https:
 ## Project Description
 This project contains the following files: 
 ```
-* requirements.txt: contains the project dependencies.
 * utils.py: contains utility functions used in the tasks 1, 2, 3 and 4.
 * task1.py: contains solution script for task 1.
 * task2.py: contains solution script for task 2.
@@ -31,8 +30,15 @@ Please make sure that a python version >= 3.5 and pip are installed in your mach
 if not, you can download them from this link : [https://www.python.org/downloads/](https://www.python.org/downloads/). <br/>
 In task 5 we used the external library psycopg2, you can install it, by running the following command in a terminal (or cmd for windows): <br />
 
-`pip install -r requirements.txt`
+`pip install psycopg2`
 
+In <b> task 5 </b> an installation of <b> PostgreSQL </b> server is required. 
+According to your operating system, follow the provided link for installation instructions : <br/>
+```
+* <b> [Windows](https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql/) </b>
+* <b> [Linux ](https://www.postgresqltutorial.com/install-postgresql-linux/)</b>
+* <b> [Mac OS ](https://www.postgresqltutorial.com/install-postgresql-macos/)</b>
+```
 ## Utils module
 
 In order to avoid code duplication and centralize used functions in tasks 1 to 4, I created the module utils wich contains the following functions :<br/>
@@ -54,5 +60,10 @@ Function used in task 2, it will process the result of a sql query in order to f
 
 ## Task 1 to 4
 
+Each script contains a function named task1_solution() (for task 1) wich contains the script to solve the task.
+To run each script, use following command in a terminal from the project directory :
+```
+Python task1.py
+``` 
 
 ## Task 5 and transactions module
