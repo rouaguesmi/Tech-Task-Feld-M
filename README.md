@@ -4,9 +4,9 @@ This repository contains my solutions for the tech task provided by [FELD M](htt
 ## Table of Contents
 * [Project Description](#project-description)
 * [Installation Guide](#installation-guide)
-* [Utils module](#utils-module)
+* [utils.py Module](#utils-.-py-module)
 * [Task 1 to 4](#task-1-to-4)
-* [Task 5 and transactions module](#Task-5-and-transactions-module)
+* [Task 5 and transactions.py module](#Task-5-and-transactions-.-py-module)
 
 
 ## Project Description
@@ -40,7 +40,7 @@ According to your operating system, follow the provided link for installation in
 * <b> [Linux ](https://www.postgresqltutorial.com/install-postgresql-linux/)</b>
 * <b> [Mac OS ](https://www.postgresqltutorial.com/install-postgresql-macos/)</b>
 
-## Utils module
+## utils.py Module
 
 In order to avoid code duplication and centralize used functions in multiple tasks, I created the module utils wich contains the following functions :<br/>
 ```
@@ -50,27 +50,28 @@ This function will connect to the provided SQLite database and execute the sql q
 The function will return a list containing the result of the sql query execution. <br/>
 
 ```
-def extract_exchange_rates(file=EUROFXREF_XML, currency='USD') -> dict:
+* def extract_exchange_rates(file=EUROFXREF_XML, currency='USD') -> dict:
 ```
 Function used in task 2 in order to extract exchage rates from the provided xml file. <br/>
 
 ```
-def find_day_with_most_revenue(result: list) -> tuple:
+* def find_day_with_most_revenue(result: list) -> tuple:
 ```
 Function used in task 2, it will process the result of a sql query in order to find the day with most revenue created by mobile phone users.<br/>
 
 ## Task 1 to 4
 
-Each script contains a function named task1_solution() (for task 1) wich contains the script to solve the task. <br/>
+Each script contains a solution for the given tasks. 
+E.g task1.py contains a function named task1_solution() wich contains the script to solve the task. <br/>
 To run each script, use following command in a terminal from the project directory :
 
 ```
 Python task1.py
 ``` 
 
-## Task 5 and transactions module
+## Task 5 and transactions.py module
 
-In order to add support to multiple DBMS, my solution is to create a class that abstracts the database manipulation : connection, disconnection, sql execution..
+In order to add support to other DBMS, my solution is to create a class that abstracts the database manipulation : connection, disconnection, sql execution, ect. 
 
 The class TransactionsDBManager constructor takes into parameters the database type : 'sqlite' or 'postgres' in our case.
 
