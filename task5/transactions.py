@@ -9,6 +9,7 @@ lets create create a classe : TransactionDBManager : this class will
 
 import sqlite3
 import psycopg2
+from sqlalchemy import true
 
 DB_DISCONNECTED_MSG = 'Database is disconnected.'
 
@@ -92,7 +93,7 @@ class TransactionsDBManager:
 
     @property
     def is_connected(self) -> bool:
-        ''' Return true if the database is connected '''
+        ''' Return true if the database is connected, false otherwise '''
         return self.m_connection is not None
 
     def get_transactions(self) -> list:
