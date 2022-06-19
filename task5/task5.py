@@ -1,6 +1,10 @@
-from os import path
+'''Solution for task 5'''
 
+from os import path
 import transactions as tr
+
+# Credentials to connect to postgesql server:
+# Please update these parameters according to your server configuration. 
 
 HOST_NAME = 'localhost'
 DB_NAME = 'transactions'

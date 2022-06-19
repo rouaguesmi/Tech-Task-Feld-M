@@ -10,10 +10,16 @@ lets create create a classe : TransactionDBManager : this class will
 import sqlite3
 import psycopg2
 
+# Error message to be displayed when the database is disconnected.
 DB_DISCONNECTED_MSG = 'Database is disconnected.'
 
 class TransactionsDBManager:
-    ''' Class to manage the 'Transactions' database using different databases '''
+    ''' Class to manage the 'Transactions' database using different 
+        databases management systems (DBMS). Currently, it supports 
+        SQLite and PostgreSQL DBMS. 
+        But it is easily upgradable to supprot other DBMS which
+        have python libraries that implement the
+        PEP 248 (python database API specifications v2.0)'''
 
     def __init__(self, dbtype='sqlite') -> None:
         self.m_dbtype = dbtype
@@ -24,7 +30,7 @@ class TransactionsDBManager:
 
     def connect(self, dbname, host=None,
                 user=None, password=None, port=None):
-        ''' Connect to database and create a cursor'''
+        '''Connect to the database and create a cursor object.'''
 
         if self.m_dbtype == 'sqlite':
             self.m_connection = sqlite3.connect(dbname)
@@ -39,15 +45,15 @@ class TransactionsDBManager:
 
         self.m_cursor = self.m_connection.cursor()
 
-    def execute(self, sql: str):
-        ''' execute a sql query '''
+    def execute(self, sql: str) -> None:
+        '''Execute a sql query '''
         if self.m_cursor is not None:
             self.m_cursor.execute(sql)
         else:
             raise Exception(DB_DISCONNECTED_MSG)
-  
-    def fetchall(self, sql: str):
-        ''' Fetch all '''
+
+    def fetchall(self, sql: str) -> list:
+        '''Fetch all data returned by the sql query execution.'''
         self.execute(sql)
         if self.m_cursor is not None:
             return self.m_cursor.fetchall()

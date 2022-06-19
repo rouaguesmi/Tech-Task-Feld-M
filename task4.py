@@ -3,17 +3,17 @@
 from datetime import datetime, timedelta
 from os import path
 import sqlite3
-from typing import final
-
-import utils 
+import utils
 
 
 def task4_solution():
-    ''' write me'''
+    ''' Update the data stored in the database to have the created revenue
+        in EUR instead of USD.'''
 
     update_list = []
 
-    currency_rates = utils.extract_exchange_rates()
+    # Extract the exchange rates from the XML file.
+    currency_rates = utils.extract_exchange_rates(utils.EUROFXREF_XML, 'USD')
 
     sql_query = ''' SELECT id, datetime FROM Transactions '''
 
@@ -23,8 +23,8 @@ def task4_solution():
         date_obj = datetime.strptime(date_time, "%Y-%m-%d %H:%M:%S")
 
         # If a date from the transactions table is a week-end day, the XML
-        # currency exchange file does not contain the exchange rate for
-        # that day, so we use the rate of the last working day of
+        # file does not contain the corresponding exchange rate
+        # so we use the rate of the last working day of
         # that week (Friday) instead.
         if date_obj.weekday() == 5:
             date_obj -= timedelta(days=1)
@@ -44,17 +44,16 @@ def task4_solution():
     try:
         # Update the transactions table with the revenue in EUR : EUR = USD / rate :
         with sqlite3.connect(dbfile_path) as connection:
-            with connection.cursor() as cursor:
-                update_query = '''  UPDATE Transactions
+            cursor = connection.cursor()
+            update_query = '''  UPDATE Transactions
                                     SET revenue = revenue / ? WHERE id = ?'''
-                cursor.executemany(update_query, update_list)
-
-                connection.commit()
-    except Exception as error:
+            cursor.executemany(update_query, update_list)
+            connection.commit()
+    except sqlite3.Error as error:
         print(error)
     finally:
         if connection is not None:
             connection.close()
 
-
-task4_solution()
+if __name__ == '__main__':
+    task4_solution()
