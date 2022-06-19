@@ -1,5 +1,5 @@
 # Tech Task FELD M
-This repository contains solutions for the tech task provided by [FELD M](https://www.feld-m.de/en/).
+This repository contains my solutions for the tech task provided by [FELD M](https://www.feld-m.de/en/).
 
 ## Table of Contents
 * [Project Description](#project-description)
@@ -10,7 +10,8 @@ This repository contains solutions for the tech task provided by [FELD M](https:
 
 
 ## Project Description
-This project contains the following files: 
+This project contains the following files: <br/>
+
 ```
 * utils.py: contains utility functions used in the tasks 1, 2, 3 and 4.
 * task1.py: contains solution script for task 1.
@@ -41,7 +42,7 @@ According to your operating system, follow the provided link for installation in
 
 ## Utils module
 
-In order to avoid code duplication and centralize used functions in tasks 1 to 4, I created the module utils wich contains the following functions :<br/>
+In order to avoid code duplication and centralize used functions in multiple tasks, I created the module utils wich contains the following functions :<br/>
 ```
 * def connect_and_execute_query(sql_query: str) -> list: 
 ```
@@ -60,10 +61,24 @@ Function used in task 2, it will process the result of a sql query in order to f
 
 ## Task 1 to 4
 
-Each script contains a function named task1_solution() (for task 1) wich contains the script to solve the task.
+Each script contains a function named task1_solution() (for task 1) wich contains the script to solve the task. <br/>
 To run each script, use following command in a terminal from the project directory :
+
 ```
 Python task1.py
 ``` 
 
 ## Task 5 and transactions module
+
+In order to add support to multiple DBMS, my solution is to create a class that abstracts the database manipulation : connection, disconnection, sql execution..
+
+The class TransactionsDBManager constructor takes into parameters the database type : 'sqlite' or 'postgres' in our case.
+
+After that, the class will allow the user to manage the two types of databases in the same manner.
+
+In order to demostrate the utility of the class TransactionsDBManager
+I used it in task5.py to do the following tasks :
+
+1/ Copy the transactions sqlite database into a postgres database.
+2/ solve task 1 with postgresql and sqlite databases using two
+objects of the class TransactionsDBManager
