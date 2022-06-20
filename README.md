@@ -4,9 +4,9 @@ This repository contains my solutions for the tech task provided by [FELD M](htt
 ## Table of Contents
 * [Project Description](#project-description)
 * [Installation Guide](#installation-guide)
-* [utils.py Module](#utils-.-py-module)
+* [utils Module](#utils-module)
 * [Task 1 to 4](#task-1-to-4)
-* [Task 5 and transactions.py module](#Task-5-and-transactions-.-py-module)
+* [Task 5 and transactions Module](#task-5-and-transactions-module)
 
 
 ## Project Description
@@ -40,7 +40,7 @@ According to your operating system, follow the provided link for installation in
 * <b> [Linux ](https://www.postgresqltutorial.com/install-postgresql-linux/)</b>
 * <b> [Mac OS ](https://www.postgresqltutorial.com/install-postgresql-macos/)</b>
 
-## utils.py Module
+## utils Module
 
 In order to avoid code duplication and centralize used functions in multiple tasks, I created the module utils wich contains the following functions :<br/>
 ```
@@ -73,7 +73,7 @@ Python task1.py
 ```
 
 
-## Task 5 and transactions.py module
+## Task 5 and transactions Module
 
 The standard DB-API for interacting with relational databases is defined in a standard interface for Python database access modules. It is documented in [PEP 249 Python Database API specification V2.0 ](https://peps.python.org/pep-0249/). 
 
