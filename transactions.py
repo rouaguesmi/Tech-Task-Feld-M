@@ -9,7 +9,7 @@ The class TransactionsDBManager constructor takes into parameters
 the database type : sqlite or postgres in our case.
 
 After that, the class will allow the user to manage
-the two types of databases in the same manner.
+the two databases in the same manner.
 
 '''
 
@@ -27,7 +27,7 @@ class TransactionsDBManager:
     SQLite and PostgreSQL DBMS.
     But it is easily upgradable to supprot other DBMS which
     can be accessed with a python module that implement the
-    PEP 248 (python database API specifications v2.0)
+    PEP 249 (python database API specification v2.0)
     '''
 
     def __init__(self, dbtype='sqlite') -> None:

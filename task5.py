@@ -3,13 +3,13 @@
 from os import path
 import transactions as tr
 
-# Credentials to connect to postgesql server:
-# Please update these parameters according to your server configuration.
+# Credentials to connect to postgesql server.
+# Please adjust these parameters according to your server configuration.
 
 HOST_NAME = 'localhost'
 DB_NAME = 'transactions'
 USERNAME = 'postgres'
-PASSWORD = '197382465'
+PASSWORD = '123456789'
 PORT_ID = '5432'
 
 DB_NAME_SQLITE = 'transactions.db'
@@ -24,8 +24,6 @@ def task5_solution():
     2/ Solve task 1 with postgresql and sqlite databases using two
     objects of the class TransactionsDBManager
 
-    Please refer to the README file or the transactions.py
-    module for more information about the TransactionsDBManager class
     '''
 
     # the transactions_postgres object will manage the transactions DB
